@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
-                                buttonZapisz.isEnabled();
+                                buttonZapisz.setVisibility(View.VISIBLE);
                                 //punkty sie nie dodaja
                             }
                         };
@@ -90,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
                         imageButton.setLeft(120);
                         imageButton.setTop(120);
                         textViewCzas.setText("0 : 10");
-                        textViewPunkty.setText("0");
+                        textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
+                        buttonZapisz.setVisibility(View.INVISIBLE);
                         //wylacz przcisk zapisu
                     }
                 }
