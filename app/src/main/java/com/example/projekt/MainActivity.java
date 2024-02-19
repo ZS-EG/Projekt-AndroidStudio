@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         textViewCzas.setText("0 : 10");
                         textViewPunkty.setText("0");
                         punkty = 0;
+                        //wylacz przcisk zapisu
                     }
                 }
         );
