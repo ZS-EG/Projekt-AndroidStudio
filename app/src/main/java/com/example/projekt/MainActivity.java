@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                                 buttonZapisz.isEnabled();
                             }
                         };
+                        timer.start();
                     }
                 }
         );
@@ -109,11 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         //todo
-        // przycisk zmeinia pozycje po kazdym kliknieciu (marginem left i top) - losowanie
-        // liczenie punktow
-        // czas - 10 sekund,
-        // zapisz i usuń wynik do listy,
-        // reset - czas i wynik
-        //
+        // przycisk zmeinia pozycje po kliknieciu - losowaniem (marginem left i top) x?-margins
+        // liczenie punktow x
+        // czas - 10 sekund, x
+        // zapisz i usuń wynik do listy, x
+        // reset - czas i wynik x?-czas
     }
 }
