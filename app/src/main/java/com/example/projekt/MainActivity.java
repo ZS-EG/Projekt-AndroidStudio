@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
                                 buttonZapisz.isEnabled();
+                                //punkty sie nie dodaja
                             }
                         };
                         timer.start();
