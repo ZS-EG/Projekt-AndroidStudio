@@ -45,17 +45,19 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        imageButton.setVisibility(View.VISIBLE);
                         timer = new CountDownTimer(sekundy*1000,1000) {
                             @Override
                             public void onTick(long l) {
                                 sekundy = (int) l/1000;
-                                textViewCzas.setText(String.valueOf(sekundy));
+                                textViewCzas.setText("0 : "+String.valueOf(sekundy));
                             }
                             @Override
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
                                 buttonZapisz.setVisibility(View.VISIBLE);
-                                //punkty sie nie dodaja
+                                imageButton.setVisibility(View.INVISIBLE);
+                                //punkty sie nie dodaja, if visibile czy clickable?
                             }
                         };
                         timer.start();
@@ -104,18 +106,16 @@ public class MainActivity extends AppCompatActivity {
                         //zmienia pozycje po kazdym kliknieciu, losowanie 250-max, 10-min
                         int losTop = (int)(Math.random()*250)+10;
                         int losLeft = (int)(Math.random()*250)+10;
-                        imageButton.setTop(losTop);
-                        imageButton.setLeft(losLeft);
+                        /* opcja a - LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
+                        layoutParams.setMargins(losLeft, losTop, 0, 0); */
+                        /* opcja b - if (params instanceof LinearLayout.LayoutParams) {
+                        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) params
+                        linearParams.bottomMargin += 20; */
+                        /* opcja c - linear.setBottom(losTop); */
                         punkty++;
                         textViewPunkty.setText(punkty);
                     }
                 }
         );
-        //todo
-        // przycisk zmeinia pozycje po kliknieciu - losowaniem (marginem left i top) x?-margins
-        // liczenie punktow x
-        // czas - 10 sekund, x
-        // zapisz i usuń wynik do listy, x
-        // reset - czas i wynik x?-czas
     }
 }
