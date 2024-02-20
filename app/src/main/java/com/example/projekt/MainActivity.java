@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //zmienia pozycje po kazdym kliknieciu, losowanie 250-max, 10-min
-                        int losTop = (int)(Math.random()*250)+10;
-                        int losLeft = (int)(Math.random()*250)+10;
+                        //int losTop = (int)(Math.random()*250)+10;
+                        //int losLeft = (int)(Math.random()*250)+10;
                         /* opcja a - LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
                         layoutParams.setMargins(losLeft, losTop, 0, 0); */
                         /* opcja b - if (params instanceof LinearLayout.LayoutParams) {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                         linearParams.bottomMargin += 20; */
                         /* opcja c - linear.setBottom(losTop); */
                         punkty++;
-                        textViewPunkty.setText(punkty);
+                        textViewPunkty.setText("Punkty : "+punkty);
                     }
                 }
         );
