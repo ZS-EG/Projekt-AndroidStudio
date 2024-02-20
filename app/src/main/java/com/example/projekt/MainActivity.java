@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1,
                 wyniki
         );
+        listaWynikow.setAdapter(adapter);
+        wyniki.add("10");
+        wyniki.add("12");
+        wyniki.add("20");
         buttonStart.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         String wynik = textViewPunkty.getText().toString();
                         wyniki.add(wynik);
                         adapter.notifyDataSetChanged();
+                        //jesli punkty = 0 -> nie zapisuj, if zapisz once -> no more!
                     }
                 }
         );
@@ -95,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
-                        //wylacz przcisk zapisu
+                        //zapis tylko gdy czas sie skonczy
                     }
                 }
         );
