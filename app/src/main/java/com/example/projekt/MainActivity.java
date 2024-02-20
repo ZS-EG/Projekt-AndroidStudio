@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,14 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 wyniki
         );
         listaWynikow.setAdapter(adapter);
-        wyniki.add("10");
-        wyniki.add("12");
-        wyniki.add("20");
+        wyniki.add("Punkty : 10");
+        wyniki.add("Punkty : 12");
         buttonStart.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        imageButton.setVisibility(View.VISIBLE);
                         timer = new CountDownTimer(sekundy*1000,1000) {
                             @Override
                             public void onTick(long l) {
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
                                 buttonZapisz.setVisibility(View.VISIBLE);
-                                imageButton.setVisibility(View.INVISIBLE);
                                 //punkty sie nie dodaja, if visibile czy clickable?
                             }
                         };
@@ -93,10 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //reset wyniku, i czasu
-                        imageButton.setLeft(120);
-                        imageButton.setTop(120);
-                        textViewCzas.setText("0 : 10");
+                        //reset wyniku, i czasu 120, 120
+                        timer.start();
                         textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
@@ -109,18 +105,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //zmienia pozycje po kazdym kliknieciu, losowanie 250-max, 10-min
-                        //int losTop = (int)(Math.random()*250)+10;
-                        //int losLeft = (int)(Math.random()*250)+10;
-                        /* opcja a - LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
-                        layoutParams.setMargins(losLeft, losTop, 0, 0); */
-                        /* opcja b - if (params instanceof LinearLayout.LayoutParams) {
-                        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) params
-                        linearParams.bottomMargin += 20; */
-                        /* opcja c - linear.setBottom(losTop); */
+                        int losTop = (int) (Math.random() * 250) + 10;
+                        int losLeft = (int) (Math.random() * 250) + 10;
                         punkty++;
-                        textViewPunkty.setText("Punkty : "+punkty);
+                        textViewPunkty.setText("Punkty : " + punkty);
+                        }
                     }
-                }
-        );
+                );
     }
 }
