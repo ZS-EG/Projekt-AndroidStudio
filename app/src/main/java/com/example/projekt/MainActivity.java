@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         textViewPunkty = findViewById(R.id.textViewPunkty);
         textViewTest = findViewById(R.id.textViewTest);
         linear = findViewById(R.id.linear);
-        rekord(wyniki); //sprawdza najwiekszy rekord?
+        rekordMaks(wyniki); //sprawdza najwiekszy rekord?
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         imageButton.setVisibility(View.VISIBLE);
+                        buttonZapisz.setVisibility(View.VISIBLE);
+                        buttonReset.setVisibility(View.VISIBLE);
                         timer = new CountDownTimer(sekundy * 1000, 1000) {
                             @Override
                             public void onTick(long l) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
                                 buttonZapisz.setVisibility(View.VISIBLE);
+                                buttonReset.setVisibility(View.VISIBLE);
                                 imageButton.setVisibility(View.INVISIBLE);
                                 //punkty sie nie dodaja, if visibile czy clickable?
                             }
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
-    public int rekord(ArrayList list){
+    public int rekordMaks(ArrayList list){
         //tutaj sprawdzi najwyzszy rekord!, sortowanie dla najwyzszego
         int maks = Integer.MIN_VALUE;
         for(int i=0; i<list.size(); i++){
@@ -134,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 maks = (int) list.get(i);
             }
         }
+        textViewTest.setText(maks);
         return maks;
     }
 }
