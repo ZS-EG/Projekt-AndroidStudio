@@ -23,11 +23,7 @@
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="457dp"
-=======
-        android:layout_height="470dp"
->>>>>>> 6dcb810f01d0a002bf784245a40ecf3a855d7acc
         android:orientation="vertical">
 
         <ImageButton
@@ -39,7 +35,6 @@
             android:src="@android:drawable/ic_media_play"
             android:visibility="invisible" />
 
-<<<<<<< HEAD
         <TextView
             android:id="@+id/textViewTest"
             android:layout_width="match_parent"
@@ -49,14 +44,6 @@
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="194dp" />
-=======
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="325dp"
-            android:background="@android:color/holo_blue_light"
-            />
->>>>>>> 6dcb810f01d0a002bf784245a40ecf3a855d7acc
 
     </LinearLayout>
 
