@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -47,21 +46,14 @@ public class MainActivity extends AppCompatActivity {
         listaWynikow.setAdapter(adapter);
         wyniki.add("Punkty : 10");
         wyniki.add("Punkty : 12");
-<<<<<<< HEAD
         wyniki.add("Punkty : 20");
         //dodac date utworzenia punktow^
-=======
->>>>>>> 6dcb810f01d0a002bf784245a40ecf3a855d7acc
         buttonStart.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-<<<<<<< HEAD
                         imageButton.setVisibility(View.VISIBLE);
                         timer = new CountDownTimer(sekundy * 1000, 1000) {
-=======
-                        timer = new CountDownTimer(sekundy*1000,1000) {
->>>>>>> 6dcb810f01d0a002bf784245a40ecf3a855d7acc
                             @Override
                             public void onTick(long l) {
                                 sekundy = (int) l / 1000;
@@ -72,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
                                 buttonZapisz.setVisibility(View.VISIBLE);
+                                imageButton.setVisibility(View.INVISIBLE);
                                 //punkty sie nie dodaja, if visibile czy clickable?
                             }
                         };
@@ -104,8 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //reset wyniku, i czasu 120, 120
-                        timer.start();
+                        //reset wyniku, i czasu
+                        imageButton.setLeft(120);
+                        imageButton.setTop(120);
+                        textViewCzas.setText("0 : 10");
                         textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
@@ -120,18 +115,13 @@ public class MainActivity extends AppCompatActivity {
                         //zmienia pozycje po kazdym kliknieciu, losowanie 250-max, 10-min
                         int losTop = (int) (Math.random() * 250) + 10;
                         int losLeft = (int) (Math.random() * 250) + 10;
-<<<<<<< HEAD
                         textViewTest.setText("Top: " + losTop + ", Left: " + losLeft);
                         //LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
                         //layoutParams.setMargins(losLeft, losTop, 0, 0);
                         punkty++;
                         textViewPunkty.setText("Punkty : " + punkty);
-=======
-                        punkty++;
-                        textViewPunkty.setText("Punkty : " + punkty);
-                        }
->>>>>>> 6dcb810f01d0a002bf784245a40ecf3a855d7acc
                     }
-                );
+                }
+        );
     }
 }
