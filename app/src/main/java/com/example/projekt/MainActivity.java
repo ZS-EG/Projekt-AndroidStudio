@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         textViewPunkty = findViewById(R.id.textViewPunkty);
         textViewTest = findViewById(R.id.textViewTest);
         linear = findViewById(R.id.linear);
+        rekord(wyniki); //sprawdza najwiekszy rekord?
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
@@ -123,5 +124,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+    public int rekord(ArrayList list){
+        //tutaj sprawdzi najwyzszy rekord!, sortowanie dla najwyzszego
+        int maks = Integer.MIN_VALUE;
+        for(int i=0; i<list.size(); i++){
+            int listak = (int) list.get(i);
+            if(maks > listak){
+                maks = (int) list.get(i);
+            }
+        }
+        return maks;
     }
 }
