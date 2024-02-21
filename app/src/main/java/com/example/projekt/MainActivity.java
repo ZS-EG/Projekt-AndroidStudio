@@ -120,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
                         buttonZapisz.setVisibility(View.INVISIBLE);
                         buttonStart.setVisibility(View.VISIBLE);
                         buttonReset.setVisibility(View.VISIBLE);
-                        //czas reset,
+                        //czas - reset
+                        timer.cancel();
+                        timer.start();
                     }
                 }
         );
