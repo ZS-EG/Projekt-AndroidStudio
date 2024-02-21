@@ -81,10 +81,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //zapis wyniku do listy, tylko po ukonczonym czasie
-                        String wynik = textViewPunkty.getText().toString();
-                        wyniki.add(wynik);
+                        if(punkty!=0) {
+                            String wynik = textViewPunkty.getText().toString();
+                            wyniki.add(wynik);
+                        }
+                        else{
+                            wyniki.add("Brak punktów");
+                        }
                         adapter.notifyDataSetChanged();
-                        //jesli punkty = 0 -> nie zapisuj, if zapisz once -> no more!
+                        buttonZapisz.setVisibility(View.INVISIBLE);
+                        //if zapisz once -> no more!
                     }
                 }
         );
@@ -94,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                         wyniki.remove(i);
                         adapter.notifyDataSetChanged();
+                        //jesli pusta -> brak
+                        if(listaWynikow == null){
+                            textViewTest.setText("Lista Pusta");
+                        }
                     }
                 }
         );
@@ -108,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
                         textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
+                        buttonStart.setVisibility(View.VISIBLE);
                         buttonReset.setVisibility(View.VISIBLE);
+                        //czas reset,
                     }
                 }
         );
