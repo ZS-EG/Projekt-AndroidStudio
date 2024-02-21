@@ -19,11 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private ListView listaWynikow;
     private ArrayList<String> wyniki = new ArrayList<>();
-    private TextView textViewPunkty, textViewCzas;
+    private TextView textViewPunkty, textViewCzas, textViewTest;
     private int sekundy = 10;
     private int punkty = 0;
     private LinearLayout linear;
     private CountDownTimer timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         listaWynikow = findViewById(R.id.listView);
         textViewCzas = findViewById(R.id.textViewCzas);
         textViewPunkty = findViewById(R.id.textViewPunkty);
+        textViewTest = findViewById(R.id.textViewTest);
         linear = findViewById(R.id.linear);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
@@ -42,20 +44,22 @@ public class MainActivity extends AppCompatActivity {
                 wyniki
         );
         listaWynikow.setAdapter(adapter);
-        wyniki.add("10");
-        wyniki.add("12");
-        wyniki.add("20");
+        wyniki.add("Punkty : 10");
+        wyniki.add("Punkty : 12");
+        wyniki.add("Punkty : 20");
+        //dodac date utworzenia punktow^
         buttonStart.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         imageButton.setVisibility(View.VISIBLE);
-                        timer = new CountDownTimer(sekundy*1000,1000) {
+                        timer = new CountDownTimer(sekundy * 1000, 1000) {
                             @Override
                             public void onTick(long l) {
-                                sekundy = (int) l/1000;
-                                textViewCzas.setText("0 : "+String.valueOf(sekundy));
+                                sekundy = (int) l / 1000;
+                                textViewCzas.setText("0 : " + String.valueOf(sekundy));
                             }
+
                             @Override
                             public void onFinish() {
                                 textViewCzas.setText("Koniec czasu.");
@@ -100,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         textViewPunkty.setText("Punkty : 0");
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
-                        //zapis tylko gdy czas sie skonczy
+                        buttonReset.setVisibility(View.VISIBLE);
                     }
                 }
         );
@@ -109,16 +113,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //zmienia pozycje po kazdym kliknieciu, losowanie 250-max, 10-min
-                        //int losTop = (int)(Math.random()*250)+10;
-                        //int losLeft = (int)(Math.random()*250)+10;
-                        /* opcja a - LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
-                        layoutParams.setMargins(losLeft, losTop, 0, 0); */
-                        /* opcja b - if (params instanceof LinearLayout.LayoutParams) {
-                        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) params
-                        linearParams.bottomMargin += 20; */
-                        /* opcja c - linear.setBottom(losTop); */
+                        int losTop = (int) (Math.random() * 250) + 10;
+                        int losLeft = (int) (Math.random() * 250) + 10;
+                        textViewTest.setText("Top: " + losTop + ", Left: " + losLeft);
+                        //LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
+                        //layoutParams.setMargins(losLeft, losTop, 0, 0);
                         punkty++;
-                        textViewPunkty.setText("Punkty : "+punkty);
+                        textViewPunkty.setText("Punkty : " + punkty);
                     }
                 }
         );
