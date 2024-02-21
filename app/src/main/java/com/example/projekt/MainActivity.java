@@ -2,6 +2,7 @@ package com.example.projekt;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import java.util.Calendar;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,16 +81,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         //zapis wyniku do listy, tylko po ukonczonym czasie
-                        if(punkty!=0) {
-                            String wynik = textViewPunkty.getText().toString();
-                            wyniki.add(wynik);
-                        }
-                        else{
-                            wyniki.add("Brak punktów");
-                        }
-                        adapter.notifyDataSetChanged();
-                        buttonZapisz.setVisibility(View.INVISIBLE);
-                        //if zapisz once -> no more!
+                            if (punkty != 0) {
+                                String wynik = textViewPunkty.getText().toString();
+                                wyniki.add(wynik + " dnia : " + Calendar.getInstance().getTime());
+                                //Date currentTime = Calendar.getInstance().getTime();
+                                //pokazuje czas teraz ^
+                            } else {
+                                wyniki.add("Brak punktów");
+                            }
+                            adapter.notifyDataSetChanged();
+                            buttonZapisz.setVisibility(View.INVISIBLE);
                     }
                 }
         );
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         punkty = 0;
                         buttonZapisz.setVisibility(View.INVISIBLE);
                         buttonStart.setVisibility(View.VISIBLE);
-                        buttonReset.setVisibility(View.VISIBLE);
+                        buttonReset.setVisibility(View.INVISIBLE);
                         //czas - reset
                         timer.cancel();
                         timer.start();
@@ -134,8 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         int losTop = (int) (Math.random() * 250) + 10;
                         int losLeft = (int) (Math.random() * 250) + 10;
                         textViewTest.setText("Top: " + losTop + ", Left: " + losLeft);
-                        //LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) linear.findViewById(R.id.linear).getLayoutParams();
-                        //layoutParams.setMargins(losLeft, losTop, 0, 0);
+                        //tutaj zmiana pozycji obrazka
                         punkty++;
                         textViewPunkty.setText("Punkty : " + punkty);
                     }
